@@ -8,6 +8,7 @@ let score = 0;
 // Select DOM elements
 const questionsContainer = document.querySelector('#questions-container');
 const answersContainer = document.querySelector('#answers-container');
+const scoreContainer = document.querySelector('#score-container');
 
 // Display categories at the start
 showCategories();
@@ -77,6 +78,7 @@ function showOptions(answers, correctAnswer, questionIndex) {
 function showResult() {
   updateQuestion('');
   clearContainer(answersContainer);
+  clearContainer(scoreContainer);
 
   const result = createElement('h2', {
     className: 'total',
@@ -88,8 +90,8 @@ function showResult() {
   const buttonContainer = createElement('div', { className: 'button-container' });
   buttonContainer.appendChild(resetButton);
 
-  answersContainer.appendChild(result);
-  answersContainer.appendChild(buttonContainer);
+  scoreContainer.appendChild(result);
+  scoreContainer.appendChild(buttonContainer);
 }
 
 // Function to update the displayed question

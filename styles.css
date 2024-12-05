@@ -37,17 +37,14 @@ body {
 #main-container {
   width: 90%;
   margin: 30px auto;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
 }
 
 #questions-container {
-  border: 2px solid yellow;
   flex: 1;
 }
 #answers-container {
-  border: 2px solid green;
   flex: 1;
 }
 
