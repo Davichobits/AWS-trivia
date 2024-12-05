@@ -81,17 +81,15 @@ function showResult() {
   clearContainer(answersContainer);
   clearContainer(scoreContainer);
 
-  const result = createElement('h2', {
-    className: 'total',
-    textContent: `You got ${score} correct answers out of ${questionsSelected.length} questions.`
-  });
+  const result = `<h2 class='total'>You got <span class="score">${score}</span> correct answers out of <span class="score">${questionsSelected.length}</span> questions.</h2>`;
+
   const resetButton = createElement('button', { id: 'reset', textContent: 'Reset' });
   resetButton.addEventListener('click', showCategories);
 
   const buttonContainer = createElement('div', { className: 'button-container' });
   buttonContainer.appendChild(resetButton);
 
-  scoreContainer.appendChild(result);
+  scoreContainer.innerHTML = result;
   scoreContainer.appendChild(buttonContainer);
 }
 
