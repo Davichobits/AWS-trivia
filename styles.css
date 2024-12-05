@@ -30,6 +30,7 @@ body {
 }
 
 .main-title {
+  margin-top: 30px;
   color: var(--color-answer);
   text-align: center;
 }
@@ -69,10 +70,29 @@ body {
   }
 }
 
+footer{
+  margin-top: 200px;
+  width: 100%;
+  background-color: var(--color-background);
+  padding: 20px;
+  text-align: center;
+  color: var(--color-answer);
+}
+
+footer a{
+  text-decoration: none;
+  color: var(--color-hover);
+}
+
 
 @media (min-width: 769px) {
   #main-container {
     flex-direction: row;
+  }
+  footer{
+    position: fixed; 
+    bottom: 0;
+    left: 0;
   }
 }
 
@@ -125,3 +145,4 @@ body {
     background-color: var(--color-background);
   }
 }
+
