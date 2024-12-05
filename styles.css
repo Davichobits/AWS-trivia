@@ -1,0 +1,130 @@
+/* Reset spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --color-question: #3C4C67;
+  --color-hover: #bdd72d;
+  --color-wrong-answer: #c46363;
+  --color-answer: #c5bfbf;
+  --color-answer-hover: #000000;
+  --color-background: #313E51;
+
+  --question-size: 2rem;
+  --answer-size: 1.2rem;
+}
+
+/* Font */
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('./assets/fonts/DepartureMono-Regular.otf');
+}
+
+body {
+  font-family: 'Departure Mono';
+  background-color: var(--color-background);
+}
+
+.main-title {
+  color: var(--color-answer);
+  text-align: center;
+}
+
+#main-container {
+  width: 90%;
+  margin: 30px auto;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+#questions-container {
+  border: 2px solid yellow;
+  flex: 1;
+}
+#answers-container {
+  border: 2px solid green;
+  flex: 1;
+}
+
+.question {
+  font-size: var(--question-size);
+  color: var(--color-hover);
+  margin: 8px 8px 32px;
+  flex: 1;
+}
+
+.answer {
+  background-color: var(--color-question);
+  margin: 8px;
+  color: var(--color-answer);
+  font-size: var(--question-size);
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--color-hover);
+    color: var(--color-answer-hover);
+  }
+}
+
+
+@media (min-width: 769px) {
+  #main-container {
+    flex-direction: row;
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.correct, .wrong {
+  background-color: var(--color-hover);
+  color: var(--color-answer-hover); /* You can customize the color */
+  animation: blink 0.3s ease-in-out 1; /* Animation duration and repetitions */
+}
+
+.correct::after {
+  content: '✔️';
+  margin-left: 16px;
+}
+
+.wrong::after {
+  content: '❌';
+  margin-left: 16px;
+}
+
+.total {
+  font-size: var(--question-size);
+  color: var(--color-answer);
+  margin: 8px 8px 32px;
+  text-align: center;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#reset {  
+  border: none;
+  background-color: var(--color-hover);
+  color: var(--color-answer-hover);
+  font-family: 'Departure Mono';
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: var(--question-size);
+  cursor: pointer;
+  &:hover {
+    border: 1px solid var(--color-hover);
+    color: var(--color-hover);
+    background-color: var(--color-background);
+  }
+}
