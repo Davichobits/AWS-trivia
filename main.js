@@ -17,6 +17,7 @@ showCategories();
 function showCategories() {
   updateQuestion("Choose a category:");
   clearContainer(answersContainer);
+  clearContainer(scoreContainer);
 
   Object.keys(questionsAndAnswers).forEach((category) => {
     const option = createElement(
