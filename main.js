@@ -1,5 +1,5 @@
-// Import questions and answers
 import { questionsAndAnswers } from './questions-and-answers.js';
+import { showConfetti } from './utils/show-confetti.js';
 
 // Initialize variables
 let questionsSelected = [];
@@ -15,6 +15,12 @@ showCategories();
 
 // Function to display available categories
 function showCategories() {
+
+
+  
+
+
+
   updateQuestion("Choose a category:");
   clearContainer(answersContainer);
   clearContainer(scoreContainer);
@@ -100,6 +106,10 @@ function showResult() {
 
   scoreContainer.innerHTML = result;
   scoreContainer.appendChild(buttonContainer);
+
+  if(score === questionsSelected.length){
+    showConfetti();
+  }
 }
 
 // Function to update the displayed question
