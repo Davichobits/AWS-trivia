@@ -34,10 +34,16 @@ function showCategories() {
 
 // Function to select a category and display the first question
 function selectCategory(category) {
-  questionsSelected = questionsAndAnswers[category];
+  if (!questionsAndAnswers[category]) {
+    console.error(`Category "${category}" not found`);
+    return;
+  }
+  // Create a copy of the questions array and shuffle it
+  questionsSelected = shuffleArray([...questionsAndAnswers[category]]);
   score = 0;
   showQuestion(0);
 }
+
 
 // Function to display a question based on its index
 function showQuestion(index) {
@@ -55,12 +61,15 @@ function showOptions(answers, correctAnswer, questionIndex) {
   clearContainer(answersContainer);
 
   let optionSelected = false;
-  answers.forEach((answer) => {
+  // Create an array of answers and shuffle them
+  const shuffledAnswers = shuffleArray([...answers]);
+  
+  shuffledAnswers.forEach((answer) => {
     const option = createElement('p', { className: 'answer', textContent: answer });
     option.addEventListener('click', () => {
       if (optionSelected) return;
       optionSelected = true;
-      // Validate the selected answer
+      
       if (answer === correctAnswer) {
         option.classList.add('correct');
         score++;
@@ -68,12 +77,12 @@ function showOptions(answers, correctAnswer, questionIndex) {
         option.classList.add('wrong');
       }
 
-      // Wait before showing the next question
       setTimeout(() => showQuestion(questionIndex + 1), 500);
     });
     answersContainer.appendChild(option);
   });
 }
+
 
 // Function to display the final result
 function showResult() {
@@ -112,3 +121,12 @@ function createElement(tag, attributes = {}) {
   });
   return element;
 }
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
